@@ -1,0 +1,4 @@
+RABBIT_HOST = "rabbitmq"
+RABBIT_CONNECTION_TIMEOUT = 60
+
+dynaconf_include = ["./*.py"]

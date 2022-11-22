@@ -1,0 +1,967 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Container modules" href="myst.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>AMRDirect Method - BioViewer.AMR 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">BioViewer.AMR 1.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">BioViewer.AMR 1.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="amr_passport.html">Landing page title</a></li>
+<li class="toctree-l1"><a class="reference internal" href="myst.html">Container modules</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">AMRDirect Method</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="amrdirect-method">
+<h1>AMRDirect Method<a class="headerlink" href="#amrdirect-method" title="Permalink to this heading">#</a></h1>
+<section id="typechecker">
+<span id="id1"></span><h2>Typechecker<a class="headerlink" href="#typechecker" title="Permalink to this heading">#</a></h2>
+<span class="target" id="module-methods.AMRDirect.typechecker"></span><p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker" title="methods.AMRDirect.typechecker.AMRDirectTypeChecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectTypeChecker</span></code></a>(result, data_schema, errors)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.typechecker.AMRDirectTypeChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.typechecker.</span></span><span class="sig-name descname"><span class="pre">AMRDirectTypeChecker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result:</span> <span class="pre">~typing.Optional[~data_definitions.numedy.InputPackage]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_schema:</span> <span class="pre">~typing.Optional[dict]</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/typechecker.html#AMRDirectTypeChecker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="myst.html#abstracts.TypeChecker" title="abstracts.TypeChecker"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeChecker</span></code></a></p>
+<p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker.check_types" title="methods.AMRDirect.typechecker.AMRDirectTypeChecker.check_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_types</span></code></a>(input_data)</p></td>
+<td><p>Checks field types in the incoming data against client-specific data schema.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.typechecker.AMRDirectTypeChecker.check_types">
+<span class="sig-name descname"><span class="pre">check_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/typechecker.html#AMRDirectTypeChecker.check_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker.check_types" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks field types in the incoming data against client-specific data schema.
+Data schemas are defined in data_definitions submodules.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="converter">
+<span id="id2"></span><h2>Converter<a class="headerlink" href="#converter" title="Permalink to this heading">#</a></h2>
+<span class="target" id="module-methods.AMRDirect.converter"></span><p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter" title="methods.AMRDirect.converter.AMRDirectConverter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectConverter</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.converter.AMRDirectConverter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.converter.</span></span><span class="sig-name descname"><span class="pre">AMRDirectConverter</span></span><a class="reference internal" href="_modules/methods/AMRDirect/converter.html#AMRDirectConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.converter.AMRDirectConverter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="myst.html#abstracts.Converter" title="abstracts.Converter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Converter</span></code></a></p>
+<p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.convert" title="methods.AMRDirect.converter.AMRDirectConverter.convert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert</span></code></a>()</p></td>
+<td><p>Performs actual conversion from external to internal format.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_erroneous_run" title="methods.AMRDirect.converter.AMRDirectConverter.restore_erroneous_run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_erroneous_run</span></code></a>(error)</p></td>
+<td><p>Restores data from internal format to output client-specific format in case of an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_successful_run" title="methods.AMRDirect.converter.AMRDirectConverter.restore_successful_run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_successful_run</span></code></a>(method_result)</p></td>
+<td><p>Restores data from internal format to output client-specific format in case of successful calculation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.store" title="methods.AMRDirect.converter.AMRDirectConverter.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(input_package)</p></td>
+<td><p>Stores full incoming data package for further use.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.converter.AMRDirectConverter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/converter.html#AMRDirectConverter.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.converter.AMRDirectConverter.convert" title="Permalink to this definition">#</a></dt>
+<dd><p>Performs actual conversion from external to internal format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.converter.AMRDirectConverter.restore_erroneous_run">
+<span class="sig-name descname"><span class="pre">restore_erroneous_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ExternalError</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/converter.html#AMRDirectConverter.restore_erroneous_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_erroneous_run" title="Permalink to this definition">#</a></dt>
+<dd><p>Restores data from internal format to output client-specific format in case of an error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.converter.AMRDirectConverter.restore_successful_run">
+<span class="sig-name descname"><span class="pre">restore_successful_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/converter.html#AMRDirectConverter.restore_successful_run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_successful_run" title="Permalink to this definition">#</a></dt>
+<dd><p>Restores data from internal format to output client-specific format in case of successful
+calculation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.converter.AMRDirectConverter.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_package</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InputPackage</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/converter.html#AMRDirectConverter.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.converter.AMRDirectConverter.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Stores full incoming data package for further use.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="validator">
+<span id="id3"></span><h2>Validator<a class="headerlink" href="#validator" title="Permalink to this heading">#</a></h2>
+<span class="target" id="module-methods.AMRDirect.validator"></span><p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.validator.AMRChoices" title="methods.AMRDirect.validator.AMRChoices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRChoices</span></code></a>(value)</p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.validator.AMRDirectValidator" title="methods.AMRDirect.validator.AMRDirectValidator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectValidator</span></code></a>(document, success)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.validator.AMRVariables" title="methods.AMRDirect.validator.AMRVariables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRVariables</span></code></a>(value)</p></td>
+<td><p>An enumeration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.validator.AMRChoices">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.validator.</span></span><span class="sig-name descname"><span class="pre">AMRChoices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/validator.html#AMRChoices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.validator.AMRChoices" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.validator.AMRDirectValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.validator.</span></span><span class="sig-name descname"><span class="pre">AMRDirectValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">success:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/validator.html#AMRDirectValidator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.validator.AMRDirectValidator" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="myst.html#abstracts.Validator" title="abstracts.Validator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Validator</span></code></a></p>
+<p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.validator.AMRDirectValidator.validate" title="methods.AMRDirect.validator.AMRDirectValidator.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate</span></code></a>(internal_data)</p></td>
+<td><p>Specific data validation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.validator.AMRDirectValidator.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">internal_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/validator.html#AMRDirectValidator.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.validator.AMRDirectValidator.validate" title="Permalink to this definition">#</a></dt>
+<dd><p>Specific data validation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.validator.AMRVariables">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.validator.</span></span><span class="sig-name descname"><span class="pre">AMRVariables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/validator.html#AMRVariables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.validator.AMRVariables" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+</section>
+<section id="calculator">
+<span id="id4"></span><h2>Calculator<a class="headerlink" href="#calculator" title="Permalink to this heading">#</a></h2>
+<span class="target" id="module-methods.AMRDirect.calculator"></span><p>Функции расчета резистентности</p>
+<p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator" title="methods.AMRDirect.calculator.AMRDirectCalculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectCalculator</span></code></a>([result])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Functions:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.calculator.calculate_indirect_amr" title="methods.AMRDirect.calculator.calculate_indirect_amr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_indirect_amr</span></code></a>([data])</p></td>
+<td><p>Получение списка групп антибиотиков на основе результатов ПЦР биоценозов.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.calculator.AMRDirectCalculator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.calculator.</span></span><span class="sig-name descname"><span class="pre">AMRDirectCalculator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/calculator.html#AMRDirectCalculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.calculator.AMRDirectCalculator" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="myst.html#abstracts.Calculator" title="abstracts.Calculator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Calculator</span></code></a></p>
+<p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator._calculate_direct_amr" title="methods.AMRDirect.calculator.AMRDirectCalculator._calculate_direct_amr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_calculate_direct_amr</span></code></a>([data, metadata])</p></td>
+<td><p>Получение списка групп антибиотиков на основе результатов ПЦР.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator.calculate" title="methods.AMRDirect.calculator.AMRDirectCalculator.calculate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate</span></code></a>(data)</p></td>
+<td><p>Performs actual calculations.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.calculator.AMRDirectCalculator._calculate_direct_amr">
+<span class="sig-name descname"><span class="pre">_calculate_direct_amr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/calculator.html#AMRDirectCalculator._calculate_direct_amr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.calculator.AMRDirectCalculator._calculate_direct_amr" title="Permalink to this definition">#</a></dt>
+<dd><p>Получение списка групп антибиотиков на основе результатов ПЦР.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – словарь с результатами тестов ПЦР</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>словарь с со списком групп антибиотиков для визуализации</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.calculator.AMRDirectCalculator.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/calculator.html#AMRDirectCalculator.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.calculator.AMRDirectCalculator.calculate" title="Permalink to this definition">#</a></dt>
+<dd><p>Performs actual calculations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="methods.AMRDirect.calculator.calculate_indirect_amr">
+<span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.calculator.</span></span><span class="sig-name descname"><span class="pre">calculate_indirect_amr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/calculator.html#calculate_indirect_amr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.calculator.calculate_indirect_amr" title="Permalink to this definition">#</a></dt>
+<dd><p>Получение списка групп антибиотиков на основе результатов ПЦР биоценозов.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> – словарь с результатами тестов ПЦР</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>словарь с со списком групп антибиотиков для визуализации</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="visualizer">
+<span id="id5"></span><h2>Visualizer<a class="headerlink" href="#visualizer" title="Permalink to this heading">#</a></h2>
+<span class="target" id="module-methods.AMRDirect.visualizer"></span><p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer" title="methods.AMRDirect.visualizer.AMRDirectVisualizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectVisualizer</span></code></a>([height, width])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.visualizer.AMRDirectVisualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.visualizer.</span></span><span class="sig-name descname"><span class="pre">AMRDirectVisualizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1054</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">551</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/visualizer.html#AMRDirectVisualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="myst.html#abstracts.Visualizer" title="abstracts.Visualizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Visualizer</span></code></a></p>
+<p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.generate_base64" title="methods.AMRDirect.visualizer.AMRDirectVisualizer.generate_base64"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_base64</span></code></a>()</p></td>
+<td><p>Converts supplied visualization result to Base64-encoded string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.render_png" title="methods.AMRDirect.visualizer.AMRDirectVisualizer.render_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">render_png</span></code></a>()</p></td>
+<td><p>Renders visualization results to PNG format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.save_png" title="methods.AMRDirect.visualizer.AMRDirectVisualizer.save_png"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_png</span></code></a>([filename])</p></td>
+<td><p>Saves rendered PNG to the file system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.visualize" title="methods.AMRDirect.visualizer.AMRDirectVisualizer.visualize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualize</span></code></a>(data)</p></td>
+<td><p>Extracts data from calculation results and prepares sources needed for rendering image(s).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.visualizer.AMRDirectVisualizer.generate_base64">
+<span class="sig-name descname"><span class="pre">generate_base64</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/visualizer.html#AMRDirectVisualizer.generate_base64"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.generate_base64" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts supplied visualization result to Base64-encoded string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.visualizer.AMRDirectVisualizer.render_png">
+<span class="sig-name descname"><span class="pre">render_png</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/visualizer.html#AMRDirectVisualizer.render_png"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.render_png" title="Permalink to this definition">#</a></dt>
+<dd><p>Renders visualization results to PNG format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.visualizer.AMRDirectVisualizer.save_png">
+<span class="sig-name descname"><span class="pre">save_png</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'output.png'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/visualizer.html#AMRDirectVisualizer.save_png"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.save_png" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves rendered PNG to the file system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.visualizer.AMRDirectVisualizer.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/visualizer.html#AMRDirectVisualizer.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.visualize" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts data from calculation results and prepares sources needed for rendering image(s).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-methods.AMRDirect.storagemanager">
+<span id="storage-manager"></span><span id="storagemanager"></span><h2>Storage Manager<a class="headerlink" href="#module-methods.AMRDirect.storagemanager" title="Permalink to this heading">#</a></h2>
+<p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.AMRData" title="methods.AMRDirect.storagemanager.AMRData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRData</span></code></a>(*args[, _id, revision_id, ...])</p></td>
+<td><p>Helper class for proper stringification of the JSON fields needed for MongoDB.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager" title="methods.AMRDirect.storagemanager.AsyncMongoStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AsyncMongoStorageManager</span></code></a>(conn_config)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager" title="methods.AMRDirect.storagemanager.JsonStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">JsonStorageManager</span></code></a>(conn_config)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.LoggingStorageManager" title="methods.AMRDirect.storagemanager.LoggingStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoggingStorageManager</span></code></a>(conn_config)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager" title="methods.AMRDirect.storagemanager.MongoStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MongoStorageManager</span></code></a>(conn_config)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager" title="methods.AMRDirect.storagemanager.SyncMongoStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SyncMongoStorageManager</span></code></a>(conn_config)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.AMRData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">AMRData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PydanticObjectId</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">revision_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UUID</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typechecker_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InputPackage</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conversion_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InternalFormat</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calculation_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">visualizer_bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ExternalError</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#AMRData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.AMRData" title="Permalink to this definition">#</a></dt>
+<dd><p>Helper class for proper stringification of the JSON fields needed for MongoDB.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.AsyncMongoStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">AsyncMongoStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#AsyncMongoStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager.store" title="methods.AMRDirect.storagemanager.AsyncMongoStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(data_to_store)</p></td>
+<td><p>Stores data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.AsyncMongoStorageManager.store">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_to_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#AsyncMongoStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Stores data. The storage format and engine are defined in the implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.JsonStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">JsonStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#JsonStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.JsonStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager._check_sanity" title="methods.AMRDirect.storagemanager.JsonStorageManager._check_sanity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_check_sanity</span></code></a>()</p></td>
+<td><p>If the json file is corrupted, rename it and create a new one</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager._read_history" title="methods.AMRDirect.storagemanager.JsonStorageManager._read_history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_read_history</span></code></a>()</p></td>
+<td><p>It reads the history file and returns a list of the history items :return: A list of dictionaries.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager.store" title="methods.AMRDirect.storagemanager.JsonStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(data_to_store)</p></td>
+<td><p>Reads the history from the file, appends the new data to the history, and writes the history back to the file</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.JsonStorageManager._check_sanity">
+<span class="sig-name descname"><span class="pre">_check_sanity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#JsonStorageManager._check_sanity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.JsonStorageManager._check_sanity" title="Permalink to this definition">#</a></dt>
+<dd><p>If the json file is corrupted, rename it and create a new one</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.JsonStorageManager._read_history">
+<span class="sig-name descname"><span class="pre">_read_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#JsonStorageManager._read_history"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.JsonStorageManager._read_history" title="Permalink to this definition">#</a></dt>
+<dd><p>It reads the history file and returns a list of the history items
+:return: A list of dictionaries.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.JsonStorageManager.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_to_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#JsonStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.JsonStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads the history from the file, appends the new data to the history, and writes the history back to the file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_to_store</strong> (<a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><em>IntermediateData</em></a>) – The data to store</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A boolean value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.LoggingStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">LoggingStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#LoggingStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.LoggingStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.LoggingStorageManager.store" title="methods.AMRDirect.storagemanager.LoggingStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(data_to_store)</p></td>
+<td><p>Stores data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.LoggingStorageManager.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_to_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#LoggingStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.LoggingStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Stores data. The storage format and engine are defined in the implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.MongoStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">MongoStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#MongoStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.MongoStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager._create_conn_string" title="methods.AMRDirect.storagemanager.MongoStorageManager._create_conn_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_create_conn_string</span></code></a>()</p></td>
+<td><p>If the environment variables <cite>MONGO_USERNAME</cite> and <cite>MONGO_PASSWORD</cite> are set, then return a connection string with those values, otherwise return <cite>None</cite> :return: A string that is the connection string to the mongo database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager.store" title="methods.AMRDirect.storagemanager.MongoStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(data_to_store)</p></td>
+<td><p>Stores data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.MongoStorageManager._create_conn_string">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">_create_conn_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#MongoStorageManager._create_conn_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.MongoStorageManager._create_conn_string" title="Permalink to this definition">#</a></dt>
+<dd><p>If the environment variables <cite>MONGO_USERNAME</cite> and <cite>MONGO_PASSWORD</cite> are set, then return a connection string with
+those values, otherwise return <cite>None</cite>
+:return: A string that is the connection string to the mongo database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.MongoStorageManager.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_to_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#MongoStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.MongoStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Stores data. The storage format and engine are defined in the implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.SyncMongoStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.storagemanager.</span></span><span class="sig-name descname"><span class="pre">SyncMongoStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#SyncMongoStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager._init_storage" title="methods.AMRDirect.storagemanager.SyncMongoStorageManager._init_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_init_storage</span></code></a>()</p></td>
+<td><p>It creates a connection to the MongoDB database and creates a collection called AMRData</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager.store" title="methods.AMRDirect.storagemanager.SyncMongoStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>(data_to_store)</p></td>
+<td><p>It takes an object of type IntermediateData, converts it to a dictionary, adds a timestamp, and then inserts it into the database</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.SyncMongoStorageManager._init_storage">
+<span class="sig-name descname"><span class="pre">_init_storage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#SyncMongoStorageManager._init_storage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager._init_storage" title="Permalink to this definition">#</a></dt>
+<dd><p>It creates a connection to the MongoDB database and creates a collection called AMRData</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.storagemanager.SyncMongoStorageManager.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_to_store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><span class="pre">IntermediateData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/methods/AMRDirect/storagemanager.html#SyncMongoStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>It takes an object of type IntermediateData, converts it to a dictionary, adds a timestamp, and then inserts it into
+the database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_to_store</strong> (<a class="reference internal" href="myst.html#abstracts.IntermediateData" title="abstracts.IntermediateData"><em>IntermediateData</em></a>) – The data to store in the database</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A boolean value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-methods.AMRDirect.factory">
+<span id="method-factory"></span><span id="factory"></span><h2>Method Factory<a class="headerlink" href="#module-methods.AMRDirect.factory" title="Permalink to this heading">#</a></h2>
+<p>Factory class for AMR Direct method.</p>
+<p><strong>Classes:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory" title="methods.AMRDirect.factory.AMRDirectMethodFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectMethodFactory</span></code></a>([typechecker, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectStorageManager" title="methods.AMRDirect.factory.AMRDirectStorageManager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AMRDirectStorageManager</span></code></a>([conn_config])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.factory.</span></span><span class="sig-name descname"><span class="pre">AMRDirectMethodFactory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typechecker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_calculator" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_calculator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_calculator</span></code></a>()</p></td>
+<td><p>Returns calculator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_converter" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_converter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_converter</span></code></a>()</p></td>
+<td><p>Returns converter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_storage_manager" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_storage_manager"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_storage_manager</span></code></a>()</p></td>
+<td><p>Returns storage manager.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_type_checker" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_type_checker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_type_checker</span></code></a>()</p></td>
+<td><p>Returns type checker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_validator" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_validator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_validator</span></code></a>()</p></td>
+<td><p>Returns validator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_visualizer" title="methods.AMRDirect.factory.AMRDirectMethodFactory.get_visualizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_visualizer</span></code></a>()</p></td>
+<td><p>Returns visualizer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.run_factory" title="methods.AMRDirect.factory.AMRDirectMethodFactory.run_factory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_factory</span></code></a>()</p></td>
+<td><p>Returns all objects produced by a factory embedded in FactoryRunResult structure.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_calculator">
+<span class="sig-name descname"><span class="pre">get_calculator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.Calculator" title="abstracts.Calculator"><span class="pre">Calculator</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_calculator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_calculator" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns calculator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_converter">
+<span class="sig-name descname"><span class="pre">get_converter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.Converter" title="abstracts.Converter"><span class="pre">Converter</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_converter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_converter" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns converter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_storage_manager">
+<span class="sig-name descname"><span class="pre">get_storage_manager</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.StorageManager" title="abstracts.StorageManager"><span class="pre">StorageManager</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_storage_manager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_storage_manager" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns storage manager.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_type_checker">
+<span class="sig-name descname"><span class="pre">get_type_checker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.TypeChecker" title="abstracts.TypeChecker"><span class="pre">TypeChecker</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_type_checker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_type_checker" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns type checker.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_validator">
+<span class="sig-name descname"><span class="pre">get_validator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.Validator" title="abstracts.Validator"><span class="pre">Validator</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_validator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_validator" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns validator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.get_visualizer">
+<span class="sig-name descname"><span class="pre">get_visualizer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.Visualizer" title="abstracts.Visualizer"><span class="pre">Visualizer</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.get_visualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_visualizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns visualizer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectMethodFactory.run_factory">
+<span class="sig-name descname"><span class="pre">run_factory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="myst.html#abstracts.FactoryRunResult" title="abstracts.FactoryRunResult"><span class="pre">FactoryRunResult</span></a></span></span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectMethodFactory.run_factory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.run_factory" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns all objects produced by a factory embedded in FactoryRunResult structure.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectStorageManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">methods.AMRDirect.factory.</span></span><span class="sig-name descname"><span class="pre">AMRDirectStorageManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectStorageManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectStorageManager" title="Permalink to this definition">#</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectStorageManager.store" title="methods.AMRDirect.factory.AMRDirectStorageManager.store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store</span></code></a>()</p></td>
+<td><p>Stores data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="methods.AMRDirect.factory.AMRDirectStorageManager.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/methods/AMRDirect/factory.html#AMRDirectStorageManager.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#methods.AMRDirect.factory.AMRDirectStorageManager.store" title="Permalink to this definition">#</a></dt>
+<dd><p>Stores data. The storage format and engine are defined in the implementation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="myst.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Container modules</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2019-2022, BioME LLC
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">AMRDirect Method</a><ul>
+<li><a class="reference internal" href="#typechecker">Typechecker</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker"><code class="docutils literal notranslate"><span class="pre">AMRDirectTypeChecker</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.typechecker.AMRDirectTypeChecker.check_types"><code class="docutils literal notranslate"><span class="pre">AMRDirectTypeChecker.check_types()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#converter">Converter</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter"><code class="docutils literal notranslate"><span class="pre">AMRDirectConverter</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.convert"><code class="docutils literal notranslate"><span class="pre">AMRDirectConverter.convert()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_erroneous_run"><code class="docutils literal notranslate"><span class="pre">AMRDirectConverter.restore_erroneous_run()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.restore_successful_run"><code class="docutils literal notranslate"><span class="pre">AMRDirectConverter.restore_successful_run()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.converter.AMRDirectConverter.store"><code class="docutils literal notranslate"><span class="pre">AMRDirectConverter.store()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#validator">Validator</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.validator.AMRChoices"><code class="docutils literal notranslate"><span class="pre">AMRChoices</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.validator.AMRDirectValidator"><code class="docutils literal notranslate"><span class="pre">AMRDirectValidator</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.validator.AMRDirectValidator.validate"><code class="docutils literal notranslate"><span class="pre">AMRDirectValidator.validate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.validator.AMRVariables"><code class="docutils literal notranslate"><span class="pre">AMRVariables</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#calculator">Calculator</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator"><code class="docutils literal notranslate"><span class="pre">AMRDirectCalculator</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator._calculate_direct_amr"><code class="docutils literal notranslate"><span class="pre">AMRDirectCalculator._calculate_direct_amr()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.calculator.AMRDirectCalculator.calculate"><code class="docutils literal notranslate"><span class="pre">AMRDirectCalculator.calculate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.calculator.calculate_indirect_amr"><code class="docutils literal notranslate"><span class="pre">calculate_indirect_amr()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#visualizer">Visualizer</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer"><code class="docutils literal notranslate"><span class="pre">AMRDirectVisualizer</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.generate_base64"><code class="docutils literal notranslate"><span class="pre">AMRDirectVisualizer.generate_base64()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.render_png"><code class="docutils literal notranslate"><span class="pre">AMRDirectVisualizer.render_png()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.save_png"><code class="docutils literal notranslate"><span class="pre">AMRDirectVisualizer.save_png()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.visualizer.AMRDirectVisualizer.visualize"><code class="docutils literal notranslate"><span class="pre">AMRDirectVisualizer.visualize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-methods.AMRDirect.storagemanager">Storage Manager</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.AMRData"><code class="docutils literal notranslate"><span class="pre">AMRData</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager"><code class="docutils literal notranslate"><span class="pre">AsyncMongoStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.AsyncMongoStorageManager.store"><code class="docutils literal notranslate"><span class="pre">AsyncMongoStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager"><code class="docutils literal notranslate"><span class="pre">JsonStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager._check_sanity"><code class="docutils literal notranslate"><span class="pre">JsonStorageManager._check_sanity()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager._read_history"><code class="docutils literal notranslate"><span class="pre">JsonStorageManager._read_history()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.JsonStorageManager.store"><code class="docutils literal notranslate"><span class="pre">JsonStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.LoggingStorageManager"><code class="docutils literal notranslate"><span class="pre">LoggingStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.LoggingStorageManager.store"><code class="docutils literal notranslate"><span class="pre">LoggingStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager"><code class="docutils literal notranslate"><span class="pre">MongoStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager._create_conn_string"><code class="docutils literal notranslate"><span class="pre">MongoStorageManager._create_conn_string()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.MongoStorageManager.store"><code class="docutils literal notranslate"><span class="pre">MongoStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager"><code class="docutils literal notranslate"><span class="pre">SyncMongoStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager._init_storage"><code class="docutils literal notranslate"><span class="pre">SyncMongoStorageManager._init_storage()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.storagemanager.SyncMongoStorageManager.store"><code class="docutils literal notranslate"><span class="pre">SyncMongoStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-methods.AMRDirect.factory">Method Factory</a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_calculator"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_calculator()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_converter"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_converter()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_storage_manager"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_storage_manager()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_type_checker"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_type_checker()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_validator"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_validator()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.get_visualizer"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.get_visualizer()</span></code></a></li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectMethodFactory.run_factory"><code class="docutils literal notranslate"><span class="pre">AMRDirectMethodFactory.run_factory()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectStorageManager"><code class="docutils literal notranslate"><span class="pre">AMRDirectStorageManager</span></code></a><ul>
+<li><a class="reference internal" href="#methods.AMRDirect.factory.AMRDirectStorageManager.store"><code class="docutils literal notranslate"><span class="pre">AMRDirectStorageManager.store()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    </body>
+</html>

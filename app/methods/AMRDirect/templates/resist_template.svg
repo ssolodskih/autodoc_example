@@ -1,0 +1,177 @@
+<g id="wtf">
+<rect id="Rectangle 2" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 8" x="352" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 10" x="352" y="249" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 14" x="704" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 16" x="704" y="376" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 18" y="376" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 20" y="451" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 89" y="249" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 91" x="352" y="451" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 93" y="502" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 161" x="352" y="376" width="350" height="25" fill="#CCCCCC"/>
+<rect id="Rectangle 172" x="0.5" y="24.5" width="349" height="222" stroke="#CCCCCC"/>
+<rect id="Rectangle 173" x="352.5" y="24.5" width="349" height="222" stroke="#CCCCCC"/>
+<rect id="Rectangle 174" x="704.5" y="24.5" width="349" height="349" stroke="#CCCCCC"/>
+<rect id="Rectangle 175" x="704.5" y="400.5" width="349" height="150" stroke="#CCCCCC"/>
+<rect id="Rectangle 176" x="352.5" y="273.5" width="349" height="100" stroke="#CCCCCC"/>
+<rect id="Rectangle 177" x="0.5" y="273.5" width="349" height="100" stroke="#CCCCCC"/>
+<rect id="Rectangle 178" x="0.5" y="400.5" width="349" height="48" stroke="#CCCCCC"/>
+<rect id="Rectangle 179" x="0.5" y="475.5" width="349" height="24" stroke="#CCCCCC"/>
+<rect id="Rectangle 180" x="0.5" y="526.5" width="349" height="24" stroke="#CCCCCC"/>
+<rect id="Rectangle 181" x="352.5" y="475.5" width="349" height="75" stroke="#CCCCCC"/>
+<rect id="Rectangle 182" x="352.5" y="400.5" width="349" height="48" stroke="#CCCCCC"/>
+<text id="fluoroquinolone_antibiotic_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="110.3" y="19.8745">Фторохинолоны</tspan>
+</text>
+<text id="fluoroquinolone_antibiotic" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="10" y="48">Гатифлоксацин</tspan>
+<tspan x="10" y="71">Грепафлоксацин</tspan>
+<tspan x="10" y="95">Делафлоксацин</tspan>
+<tspan x="10" y="119">Левонадифлоксацин</tspan>
+<tspan x="10" y="142">Левофлоксацин</tspan>
+<tspan x="10" y="166">Ломефлоксацин</tspan>
+<tspan x="10" y="189">Моксифлоксацин</tspan>
+<tspan x="10" y="213">Нилидксовая кислота</tspan>
+<tspan x="10" y="236">Норфлоксацин</tspan>
+<tspan x="186" y="48">Офлоксацин</tspan>
+<tspan x="186" y="71">Пефлоксацин</tspan>
+<tspan x="186" y="95">Ситафлоксацин</tspan>
+<tspan x="186" y="119">Спарфлоксацин</tspan>
+<tspan x="186" y="142">Трофафлоксацин</tspan>
+<tspan x="186" y="166">Флероксацин</tspan>
+<tspan x="186" y="189">Циноксацин</tspan>
+<tspan x="186" y="213">Ципрофлоксацин</tspan>
+<tspan x="186" y="236">Эноксацин</tspan>
+</text>
+<text id="glycopeptide_antibiotic_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="57.1499" y="268.875">Гликопептидные антибиотики </tspan>
+</text>
+<text id="glycopeptide_antibiotic" xml:space="preserve" font-family="Arial Narrow" font-size="19.7968" letter-spacing="0em">
+<tspan x="10" y="292.894">Блеомицин</tspan>
+<tspan x="10" y="317.457">Ванкомицин</tspan>
+<tspan x="10" y="342.02">Далбаванцин</tspan>
+<tspan x="186" y="292.894">Оритаванцин</tspan>
+<tspan x="186" y="317.457">Тейкопланин</tspan>
+<tspan x="186" y="342.02">Телеванцин</tspan>
+</text>
+<text id="lincosamide_antibiotic_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="120.2" y="394.875">Линкозамиды</tspan>
+</text>
+<text id="lincosamide_antibiotic" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="10" y="417.658">Клиндамицин</tspan>
+<tspan x="186" y="417.658">Линкомицин</tspan>
+</text>
+<text id="penem_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="143.281" y="470.875">Пенемы</tspan>
+</text>
+<text id="penem" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="10" y="492.679">Тикарциллин</tspan>
+<tspan x="186" y="492.679">Фаропенем</tspan>
+</text>
+<text id="monobactam_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="120.356" y="521.875">Монобактамы</tspan>
+</text>
+<text id="monobactam" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="10" y="544.253">Азтреонам</tspan>
+</text>
+<text id="penam_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="393.407" y="19.8745">Полусинтетические пенициллины</tspan>
+</text>
+<text id="penam" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="362" y="48.125">Азлоциллин</tspan>
+<tspan x="362" y="71.6879">Амоксициллин</tspan>
+<tspan x="362" y="95.2508">Ампициллин</tspan>
+<tspan x="362" y="118.814">Бензилпенициллин</tspan>
+<tspan x="362" y="142.377">Диклоксациллин</tspan>
+<tspan x="362" y="165.94">Клоксациллин</tspan>
+<tspan x="362" y="189.502">Карбенициллин</tspan>
+<tspan x="362" y="213.065">Мезлоциллин</tspan>
+<tspan x="362" y="236.628">Мециллинам</tspan>
+<tspan x="538" y="47.125">Нафициллин</tspan>
+<tspan x="538" y="70.6879">Оксациллин</tspan>
+<tspan x="538" y="94.2508">Пиперациллин</tspan>
+<tspan x="538" y="117.814">Пропициллин</tspan>
+<tspan x="538" y="141.377">Темоциллин</tspan>
+<tspan x="538" y="164.94">Феноксиметил-</tspan>
+<tspan x="538" y="186.94">пенициллин</tspan>
+<tspan x="538" y="210.502">Флуклоксациллин</tspan>
+</text>
+<text id="tetracycline_antibiotic_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="467.45" y="267.875">Тетрациклины</tspan>
+</text>
+<text id="tetracycline_antibiotic" xml:space="preserve" font-family="Arial Narrow" font-size="19.7968" letter-spacing="0em">
+<tspan x="362" y="292.976">Демеклоциклин</tspan>
+<tspan x="362" y="317.539">Доксициклин</tspan>
+<tspan x="362" y="342.102">Миноциклин</tspan>
+<tspan x="362" y="366.665">Окситетрациклин</tspan>
+<tspan x="538" y="292.894">Омадациклин</tspan>
+<tspan x="538" y="317.457">Тетрациклин</tspan>
+<tspan x="538" y="342.02">Хлортетрациклин</tspan>
+</text>
+<text id="cephamycin_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="474.036" y="394.875">Цефамицины</tspan>
+</text>
+<text id="cephamycin" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="362" y="419.179">Фломоксеф</tspan>
+<tspan x="362" y="442.742">Цефметазол</tspan>
+<tspan x="538" y="419.179">Цефокситин</tspan>
+<tspan x="538" y="442.742">Цефотетан</tspan>
+</text>
+<text id="carbapenem_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="473.201" y="470.875">Карбапенемы</tspan>
+</text>
+<text id="carbapenem" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="362" y="494.72">Дорипенем</tspan>
+<tspan x="362" y="516.72">Меропенем</tspan>
+<tspan x="538" y="493.72">Эртапенем</tspan>
+</text>
+<text id="cephalosporin_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="813.112" y="19.8745">Цефалоспорины</tspan>
+</text>
+<text id="cephalosporin" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="714" y="47.8745">Лоракарбеф</tspan>
+<tspan x="714" y="71.4374">Цефадроксил</tspan>
+<tspan x="714" y="95.0003">Цефазолин</tspan>
+<tspan x="714" y="118.563">Цефаклор</tspan>
+<tspan x="714" y="142.126">Цефалексин</tspan>
+<tspan x="714" y="165.689">Цефалотин</tspan>
+<tspan x="714" y="189.252">Цефамандол</tspan>
+<tspan x="714" y="212.815">Цефдинир</tspan>
+<tspan x="714" y="236.378">Цефдиторен</tspan>
+<tspan x="714" y="259.941">Цефепим</tspan>
+<tspan x="714" y="283.504">Цефетамет</tspan>
+<tspan x="714" y="307.066">Цефиксим</tspan>
+<tspan x="714" y="330.629">Цефоницид</tspan>
+<tspan x="890" y="47.8745">Цефоперазон</tspan>
+<tspan x="890" y="71.4374">Цефотиам</tspan>
+<tspan x="890" y="95.0003">Цефотаксим</tspan>
+<tspan x="890" y="118.563">Цефпиром</tspan>
+<tspan x="890" y="142.126">Цефподоксим</tspan>
+<tspan x="890" y="165.689">Цефпрозил</tspan>
+<tspan x="890" y="189.252">Цефрадин</tspan>
+<tspan x="890" y="212.815">Цефсулодин</tspan>
+<tspan x="890" y="236.378">Цефтазидим</tspan>
+<tspan x="890" y="259.941">Цефтибутен</tspan>
+<tspan x="890" y="283.504">Цефтизоксим</tspan>
+<tspan x="890" y="307.066">Цефтриаксон</tspan>
+<tspan x="890" y="330.629">Цефуроксим</tspan>
+</text>
+<text id="macrolide_antibiotic_title" fill="black" xml:space="preserve" style="white-space: pre" font-family="Arial Narrow" font-size="19" font-weight="bold" letter-spacing="0em">
+<tspan x="833" y="395.875">Макролиды</tspan>
+</text>
+<text id="macrolide_antibiotic" xml:space="preserve" font-family="Arial Narrow" font-size="19" letter-spacing="0em">
+<tspan x="714" y="421.179">Азитромицин</tspan>
+<tspan x="714" y="444.742">Джозамицин</tspan>
+<tspan x="714" y="468.305">Диритромицин</tspan>
+<tspan x="714" y="491.868">Кларитромицин</tspan>
+<tspan x="714" y="515.431">Мидекамицин</tspan>
+<tspan x="714" y="538.994">Олеандомицин</tspan>
+<tspan x="890" y="423.263">Рокитамицин</tspan>
+<tspan x="890" y="446.826">Рокситромицин</tspan>
+<tspan x="890" y="470.389">Спирамицин</tspan>
+<tspan x="890" y="493.952">Телитромицин</tspan>
+<tspan x="890" y="517.515">Эритромицин</tspan>
+</text>
+</g>
+</svg>

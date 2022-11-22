@@ -1,0 +1,31 @@
+{
+   "model": {
+      "service_name": "bioviewer",
+      "run_id": null,
+      "create_time": "2021-02-11 00:00:00",
+      "bioviewer_model_item_id": 190229,
+      "bioviewer_model_result_id": 7382,
+      "bioviewer_run_item_id": 39101,
+      "bioviewer_run_result_id": 34122,
+      "model_item_id": 1251,
+      "model_result_id": null,
+      "technical_model_name": "amr",
+      "patient_id": 4598005,
+      "image": null,
+      "error": {
+         "id": -1,
+         "error": {
+            "code": -32602,
+            "message": "Validation error. data/3/variable: value is not a valid enumeration member; permitted: 'imp', 'oxa_40_like', 'oxa_48_like', 'oxa_58_like', 'oxa_23_like', 'kpc', 'vim', 'ndm', 'vana', 'meca', 'vanb'",
+            "data": [
+               {
+                  "param_name": "data/3/variable",
+                  "internal_error_code": "value_out_of_range",
+                  "message": "value is not a valid enumeration member; permitted: 'imp', 'oxa_40_like', 'oxa_48_like', 'oxa_58_like', 'oxa_23_like', 'kpc', 'vim', 'ndm', 'vana', 'meca', 'vanb'"
+               }
+            ]
+         }
+      }
+   },
+   "data": null
+}

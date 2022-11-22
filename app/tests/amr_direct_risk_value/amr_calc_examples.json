@@ -1,0 +1,508 @@
+[
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 1,
+            "birthday_month": 1,
+            "birthday_year": 5,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "e63b5d28-abf0-4c00-b768-c6f187f0d7a7",
+               "variable": "vana",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "31fed158-2292-4492-aa2e-160c135f84eb",
+               "variable": "imp",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "aacd2552-e64d-44d6-a230-c55bec73da80",
+               "variable": "oxa_58_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "1d353071-fe5e-424c-90ec-d9b479b1c444",
+               "variable": "vanb",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 0,
+         "penam": 0,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 0,
+         "penem": 0,
+         "cephalosporin": 0,
+         "monobactam": 0,
+         "cephamycin": 0
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 2,
+            "birthday_month": 5,
+            "birthday_year": 1,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "d9a61593-2d0d-46f8-84fe-073132a8d3cd",
+               "variable": "oxa_40_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "ca9bd8bf-663c-4e77-84cb-e8b39f20d81d",
+               "variable": "kpc",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "b6f8aef8-9905-4514-8944-96e7e46e668d",
+               "variable": "oxa_23_like",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 0,
+         "penem": 0,
+         "cephalosporin": 2,
+         "monobactam": 0,
+         "cephamycin": 0
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 4,
+            "birthday_month": 4,
+            "birthday_year": 5,
+            "gender_id": 0,
+            "patient_id": 4
+         },
+         "data": [
+            {
+               "id_": "e62c9476-6162-4874-bd3f-312775598fa0",
+               "variable": "imp",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "e11b717b-32a8-4ec7-9c88-c703ee1f41e6",
+               "variable": "oxa_58_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "be84938d-d497-4c1f-b928-acff645d8678",
+               "variable": "oxa_40_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "e8412f57-7d04-4059-8240-4e1ead3a494b",
+               "variable": "oxa_23_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 1,
+         "penam": 1,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 0,
+         "penem": 0,
+         "cephalosporin": 1,
+         "monobactam": 0,
+         "cephamycin": 0
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 3,
+            "birthday_month": 1,
+            "birthday_year": 2,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "15fe7ec1-faef-4445-b796-22ed5557fd14",
+               "variable": "oxa_48_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "d2f9114f-f91b-48ab-868e-e757af7ae328",
+               "variable": "vim",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "0e3743d2-b34d-4b85-8664-4407924b0586",
+               "variable": "vana",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "4ba44b4a-a216-451d-b1a6-f9bc008bd0ba",
+               "variable": "vanb",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 1,
+         "penam": 1,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 2,
+         "penem": 1,
+         "cephalosporin": 1,
+         "monobactam": 0,
+         "cephamycin": 1
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 7,
+            "birthday_month": 1,
+            "birthday_year": 1,
+            "gender_id": 0,
+            "patient_id": 3
+         },
+         "data": [
+            {
+               "id_": "2d16f898-6428-4c89-a802-bd968ffd5c47",
+               "variable": "vanb",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "5711f016-eb3f-4b29-a1f7-0865647667e8",
+               "variable": "vim",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "6599d483-1ec4-43f5-88e4-71505a2845e6",
+               "variable": "ndm",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "b1336b93-7a25-4227-bf79-ce4c30f58e19",
+               "variable": "oxa_23_like",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "175d6797-6b88-4b66-b8d6-8981979a8101",
+               "variable": "oxa_58_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 1,
+         "penem": 2,
+         "cephalosporin": 2,
+         "monobactam": 0,
+         "cephamycin": 2
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 2,
+            "birthday_month": 5,
+            "birthday_year": 1,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "6ee9b6ff-f770-4f71-a3c8-00c12607105e",
+               "variable": "oxa_40_like",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "a3cf790b-54cd-40cb-8a99-fb60a063abf9",
+               "variable": "vanb",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "8ad45171-aefd-48b0-bcdb-4571929d2847",
+               "variable": "meca",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "c006a8fb-6980-4ac2-b09f-ff40de08a9b7",
+               "variable": "vim",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 1,
+         "penem": 1,
+         "cephalosporin": 2,
+         "monobactam": 0,
+         "cephamycin": 1
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 3,
+            "birthday_month": 2,
+            "birthday_year": 7,
+            "gender_id": 0,
+            "patient_id": 6
+         },
+         "data": [
+            {
+               "id_": "91607252-c836-48a0-9237-1a1c0f7f7710",
+               "variable": "kpc",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "119ead34-3a7a-479f-8d9e-1b30d51ff733",
+               "variable": "oxa_48_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "37834f21-b4e6-490e-a657-77534a93b1c5",
+               "variable": "imp",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "88a550b7-3b6e-413b-ae13-22b6af4c750c",
+               "variable": "oxa_23_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 0,
+         "penem": 0,
+         "cephalosporin": 2,
+         "monobactam": 2,
+         "cephamycin": 0
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 4,
+            "birthday_month": 1,
+            "birthday_year": 5,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "1d6d1329-f13f-49e9-befb-7c1bc8ed9771",
+               "variable": "vana",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "53707fc8-3bbf-47fb-8e51-a4fddb50f8a3",
+               "variable": "meca",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "42803fab-2d77-4adc-978b-fceb47e4b097",
+               "variable": "ndm",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "412e1c73-ba66-4efe-9646-daeec3a64b86",
+               "variable": "oxa_40_like",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "393e9e66-5a5b-4447-bc76-5e24d5fbd102",
+               "variable": "oxa_23_like",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 2,
+         "penem": 2,
+         "cephalosporin": 2,
+         "monobactam": 0,
+         "cephamycin": 2
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 1,
+            "birthday_month": 1,
+            "birthday_year": 1,
+            "gender_id": 0,
+            "patient_id": 1
+         },
+         "data": [
+            {
+               "id_": "d508a019-1a33-4bbe-9157-31cd56183cd9",
+               "variable": "vana",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "70837369-f258-43a5-b544-e633c511af58",
+               "variable": "oxa_23_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "c078652b-279f-4bc4-a949-86cbacdcf619",
+               "variable": "meca",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "0b011195-8fdb-4d20-bbf2-97a58b8e8101",
+               "variable": "oxa_58_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 0,
+         "penam": 1,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 2,
+         "penem": 0,
+         "cephalosporin": 0,
+         "monobactam": 0,
+         "cephamycin": 0
+      }
+   },
+   {
+      "request": {
+         "metadata": {
+            "birthday_day": 3,
+            "birthday_month": 3,
+            "birthday_year": 1,
+            "gender_id": 0,
+            "patient_id": 2
+         },
+         "data": [
+            {
+               "id_": "deeebffc-fc54-4c70-95f5-d017f5a34134",
+               "variable": "oxa_40_like",
+               "result": 0,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "762d0b92-62ad-472b-8cb2-5897269bc9ad",
+               "variable": "vanb",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "e1625234-5fcc-4a25-9029-c170b72d2881",
+               "variable": "oxa_58_like",
+               "result": 2,
+               "measure_time": "2022-01-01T01:01:01"
+            },
+            {
+               "id_": "addf9b62-e97f-4352-9cc4-dc7886a628fc",
+               "variable": "imp",
+               "result": 1,
+               "measure_time": "2022-01-01T01:01:01"
+            }
+         ]
+      },
+      "response": {
+         "macrolide_antibiotic": 0,
+         "fluoroquinolone_antibiotic": 0,
+         "lincosamide_antibiotic": 0,
+         "carbapenem": 2,
+         "penam": 2,
+         "tetracycline_antibiotic": 0,
+         "glycopeptide_antibiotic": 2,
+         "penem": 1,
+         "cephalosporin": 2,
+         "monobactam": 0,
+         "cephamycin": 1
+      }
+   }
+]

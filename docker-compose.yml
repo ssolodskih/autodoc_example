@@ -1,0 +1,54 @@
+version: "3"
+services:
+    rabbitmq:
+        container_name: "rabbitmq"
+        image: "rabbitmq:3-management"
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        volumes:
+            - "rabbitmq_data:/data"
+        restart: unless-stopped
+    bv.amr:
+        links:
+          - "rabbitmq"
+          - "mongo"
+        build: .
+        restart: unless-stopped
+        depends_on:
+            - rabbitmq
+            - mongo
+        environment:
+            - MONGO_USERNAME=admin
+            - MONGO_PASSWORD=password
+            - DOCKERIZED=Yes
+    mongo:
+        container_name: "mongodb"
+        image: "mongo"
+        ports:
+            -   "27017:27017"
+        volumes:
+            -   mongodb_data:/data/db
+        restart: unless-stopped
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=password
+
+    docs_build:
+        build:
+            context: .
+            dockerfile: docs_build.Dockerfile
+        volumes:
+            -   ./docs:/docs
+        command: ["sphinx-build", "/docs/", "/docs/_html"]
+
+#    docs_deploy:
+#        build:
+#            context: .
+#            dockerfile: docs_deploy.Dockerfile
+#        depends_on:
+#            -   docs_build
+
+volumes:
+    rabbitmq_data:
+    mongodb_data:
