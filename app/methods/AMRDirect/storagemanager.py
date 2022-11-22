@@ -208,21 +208,3 @@ async def create_async_mongo_storage_manager(conn_config) -> MongoStorageManager
     mongo_sm = AsyncMongoStorageManager(conn_config)
     await mongo_sm._init_storage()
     return mongo_sm
-
-
-if __name__ == '__main__':
-    class IntermediateDataFactory(ModelFactory[Any]):
-        __model__ = IntermediateData
-
-    data = IntermediateDataFactory.build()
-    # mongo_storage_manager = SyncMongoStorageManager('test')
-    # mongo_storage_manager.store(data)
-
-    mongo_storage_manager = AsyncMongoStorageManager({'filename': ''})
-    asyncio.run(mongo_storage_manager.store(data))
-
-    # logging_storage_manager = LoggingStorageManager({'filename': 'log.txt'})
-    # logging_storage_manager.store(data)
-    #
-    json_storage_manager = JsonStorageManager({'filename': 'log.json'})
-    json_storage_manager.store(data)
